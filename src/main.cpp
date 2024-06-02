@@ -1,6 +1,6 @@
 #include <raylib.h>
 #include <iostream>
-#include <cmath>
+#include <ParticleFilter.h>
 
 int main() {
     std::cout << "Test program" << std::endl;
