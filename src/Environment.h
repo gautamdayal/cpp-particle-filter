@@ -3,6 +3,7 @@
 #include <utility>
 #include <Eigen/Dense>
 #include <raylib.h>
+#include <cmath>
 
 #pragma once
 

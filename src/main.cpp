@@ -3,10 +3,11 @@
 #include <Eigen/Dense>
 #include <raymath.h>
 // #include <ParticleFilter.h>
+#include "Environment.h"
 
 int main() {
-    Eigen::Vector2d wall_start(100, 200);
-    Eigen::Vector2d wall_end(100, 300);
+    Eigen::Vector2d wall_start(200, 100);
+    Eigen::Vector2d wall_end(300, 100);
 
     std::cout << wall_end << std::endl;
 
@@ -14,13 +15,16 @@ int main() {
     SetTargetFPS(60);
 
     // Create a render texture to use as the background instead of calling drawing functions each frame
+    Environment bingus = Environment();
+    bingus.add_wall({wall_end, wall_start});
     
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground((Color){245, 245, 245, 255});
-        DrawRectangle(wall_start[0], wall_start[1], 5, 200, (Color){0, 0, 255, 255});
-        DrawRectangle(wall_end[0], wall_end[1], 200, 5, (Color){0, 0, 255, 255});
-    EndDrawing();
+            ClearBackground((Color){245, 245, 245, 255});
+        // DrawRectangle(wall_start[0], wall_start[1], 5, 200, (Color){0, 0, 255, 255});
+        // DrawRectangle(wall_end[0], wall_end[1], 200, 5, (Color){0, 0, 255, 255});
+            bingus.draw_environment();
+        EndDrawing();
     }
         
     CloseWindow();
