@@ -4,6 +4,8 @@
 #include <Eigen/Dense>
 #include <raylib.h>
 #include <cmath>
+#include <string>
+#include <fstream>
 
 #pragma once
 
@@ -11,6 +13,8 @@ class Environment {
     public:
         Environment();
         void add_wall(std::pair<Eigen::Vector2d, Eigen::Vector2d> wall_to_add);
+        void add_walls(std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> walls_to_add);
+        void add_walls_from_file(std::string filepath);
         void draw_environment();
     private:
         void draw_wall(std::pair<Eigen::Vector2d, Eigen::Vector2d> wall);

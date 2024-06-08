@@ -11,6 +11,8 @@ Environment::Environment() {
     Eigen::Vector2d right_wall_end(750, 550);
     Eigen::Vector2d left_wall_start(50, 50);
     Eigen::Vector2d left_wall_end(50, 550);
+    // Eigen::Vector2d 
+
 
     this->add_wall({top_wall_start, top_wall_end});
     this->add_wall({bottom_wall_start, bottom_wall_end});
@@ -22,16 +24,30 @@ void Environment::add_wall(std::pair<Eigen::Vector2d, Eigen::Vector2d> wall_to_a
     this->walls.push_back(wall_to_add);
 }
 
+void Environment::add_walls(std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> walls_to_add) {
+    for (std::pair<Eigen::Vector2d, Eigen::Vector2d> wall : walls_to_add) {
+        this->add_wall(wall);
+    }
+}
+
+void Environment::add_walls_from_file(std::string filename) {
+    std::ifstream ifs(filename);
+    std::string current_line;
+    while (std::getline(ifs, current_line)) {
+        
+    }
+}
+
 void Environment::draw_wall(std::pair<Eigen::Vector2d, Eigen::Vector2d> wall) {
     Eigen::Vector2d start = wall.first;
     Eigen::Vector2d end = wall.second;
     int height;
     int width;
     if (start[1] == end[1]) {
-        std::cout << "Wall is horizontal" << std::endl;
+        // std::cout << "Wall is horizontal" << std::endl;
         height = 10;
-        std::cout << "Width of wall: " << std::abs(start[0] - end[0]) << std::endl;
-        width = std::abs(start[0] - end[0]);
+        // std::cout << "Width of wall: " << std::abs(start[0] - end[0]) << std::endl;
+        width = std::abs(start[0] - end[0]) + 10;
     } else {
         height = std::abs(start[1] - end[1]);
         width = 10;
