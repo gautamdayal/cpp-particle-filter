@@ -10,7 +10,7 @@ int main() {
     SetTargetFPS(60);
 
     // Create a render texture to use as the background instead of calling drawing functions each frame
-    Environment bingus = Environment();
+    Environment bingus = Environment("src/walls.csv");
     
     while (!WindowShouldClose()) {
         BeginDrawing();

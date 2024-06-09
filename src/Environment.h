@@ -11,7 +11,7 @@
 
 class Environment {
     public:
-        Environment();
+        Environment(const std::string& filename);
         void add_wall(std::pair<Eigen::Vector2d, Eigen::Vector2d> wall_to_add);
         void add_walls(const std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>>& walls_to_add);
         void add_walls_from_file(const std::string& filepath);
