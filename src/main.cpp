@@ -2,6 +2,7 @@
 #include <iostream>
 #include <Eigen/Dense>
 #include <raymath.h>
+#include "Agents.h"
 #include "Environment.h"
 
 int main() {

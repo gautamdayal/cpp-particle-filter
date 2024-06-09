@@ -1,10 +1,6 @@
-#include <Agents.h>
+#include "Agents.h"
 
-Particle::Particle() {
-
-}
-
-void Particle::motion_model_step(ActionSpace action) {
+void BaseAgent::motion_model_step(ActionSpace action) {
     // Depending on key press, change pose 
     switch (action) {
         case ActionSpace::FORWARD:
@@ -22,10 +18,21 @@ void Particle::motion_model_step(ActionSpace action) {
     }
 }
 
-Eigen::VectorXd Particle::sensor_model(const Environment& env) {
+Eigen::VectorXd BaseAgent::sensor_model(const Environment& env) {
     // Get 2d rangefinder estimate as vector
+    Eigen::VectorXd dummy {{1, 2, 3}};
+    return dummy;
+}
+
+void BaseAgent::set_pose(const Eigen::Vector3d& new_pose) {
+    for (size_t i = 0; i < 3; i++) {
+        this->pose[i] = new_pose[i];
+    }
 }
 
 void Particle::draw_particle() {
     
+}
+
+void Robot::draw_robot() {
 }

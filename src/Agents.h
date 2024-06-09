@@ -1,19 +1,7 @@
-#include <Environment.h>
+#include "Environment.h"
 #include <Eigen/Dense>
 
 #pragma once 
-
-enum ActionSpace;
-
-class Particle {
-    public:
-        Particle();   
-        Eigen::VectorXd sensor_model(const Environment& env);
-        void motion_model_step(ActionSpace action);
-        void draw_particle();
-    private:
-        Eigen::Vector3d pose; // Pose stored as x, y, theta
-};
 
 enum ActionSpace {
     FORWARD,
@@ -23,3 +11,26 @@ enum ActionSpace {
     CLOCKWISE,
     ANTI_CLOCKWISE
 };
+
+
+class BaseAgent {
+    public:
+        BaseAgent() : pose(Eigen::Vector3d::Zero()) {}
+        void motion_model_step(ActionSpace action);
+        Eigen::VectorXd sensor_model(const Environment& env);
+        void set_pose(const Eigen::Vector3d& new_pose);
+        Eigen::Vector3d get_pose() const {return pose;}
+    protected:
+        Eigen::Vector3d pose;
+};
+
+class Robot : BaseAgent {
+    public:
+        void draw_robot();
+};
+
+class Particle : BaseAgent {
+    public:
+        void draw_particle();
+};
+
