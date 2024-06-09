@@ -1,0 +1,5 @@
+# Ignore mac system files, VS code stuff, and generated binaries
+
+.DS_Store
+.vscode
+bin/* 

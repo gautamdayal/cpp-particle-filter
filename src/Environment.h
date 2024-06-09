@@ -18,5 +18,5 @@ class Environment {
         void draw_environment();
     private:
         void draw_wall(std::pair<Eigen::Vector2d, Eigen::Vector2d> wall);
-        std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> walls; // Pairs formatted as <start point, end point> though order doesn't really matter 
+        std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> walls; // Pairs formatted as <start point, end point> though order doesn't matter 
 };

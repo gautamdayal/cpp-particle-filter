@@ -2,7 +2,6 @@
 #include <iostream>
 #include <Eigen/Dense>
 #include <raymath.h>
-// #include <ParticleFilter.h>
 #include "Environment.h"
 
 int main() {
@@ -11,16 +10,20 @@ int main() {
 
     // Create a render texture to use as the background instead of calling drawing functions each frame
     Environment bingus = Environment("src/walls.csv");
+    Image mite_image = LoadImage("textures/mite.png");
+    Texture2D mite = LoadTextureFromImage(mite_image);
     
     while (!WindowShouldClose()) {
         BeginDrawing();
-            ClearBackground((Color){245, 245, 245, 255});
-        // DrawRectangle(wall_start[0], wall_start[1], 5, 200, (Color){0, 0, 255, 255});
-        // DrawRectangle(wall_end[0], wall_end[1], 200, 5, (Color){0, 0, 255, 255});
+            ClearBackground(RAYWHITE);
             bingus.draw_environment();
+            Rectangle source_rectangle = {0.0f, 0.0f, (float)mite.width, (float)mite.height};
+            Rectangle dest_rectangle {400, 300, 20, 20};
+            DrawTexturePro(mite, source_rectangle, dest_rectangle, {10, 10}, 0.0f, WHITE);
+
         EndDrawing();
     }
-        
+    UnloadTexture(mite);
     CloseWindow();
     return 0;
 }
